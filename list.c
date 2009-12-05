@@ -11,10 +11,6 @@
  * -> Traverse list
  * -> Add node
  * -> Delete node
- *
- * TODO:
- *     Optimize memory allocations choosing to do fewer larger
- *     sized "malloc"s than a large number of tiny allocations
  */
 
 List*
@@ -54,8 +50,7 @@ insert_after (List* list, Node* prev, char* data) {
     Node* next = prev ? prev->next : list->head;
 
     Node* newnode = (Node *) malloc (sizeof (Node));
-    newnode->name = (char *) malloc (strlen (data) + 1);
-    strcpy (newnode->name, data);
+    newnode->name = data;
 
     newnode->prev = prev;
     newnode->next = next;
@@ -75,8 +70,7 @@ insert_before (List* list, Node* next, char* data) {
     Node* prev = next ? next->prev : list->tail;
 
     Node* newnode = (Node *) malloc (sizeof (Node));
-    newnode->name = (char *) malloc (strlen (data) + 1);
-    strcpy (newnode->name, data);
+    newnode->name = data;
 
     newnode->prev = prev;
     newnode->next = next;
