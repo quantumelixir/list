@@ -103,6 +103,5 @@ delete_from (List* list, Node* node) {
     node == list->head ? list->head = next : 0 ;
     node == list->tail ? list->tail = prev : 0 ;
 
-    free (node->name);
     free (node);
 }
