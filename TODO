@@ -1,0 +1,3 @@
+* libfxmalloc for fixed sized dynamic memory allocations
+* Cache alignment of structures and prefetching hints
+* Minimize cache thrashing
