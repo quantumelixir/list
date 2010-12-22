@@ -2,6 +2,10 @@ project(list)
 
 cmake_minimum_required(VERSION 2.6)
 
+if(APPLE)
+    include_directories(/usr/include/malloc/)
+endif(APPLE)
+
 # libify
 add_library(list SHARED list.c)
 
