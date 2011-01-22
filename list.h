@@ -3,7 +3,7 @@
 
 typedef struct Node Node; 
 struct Node {
-    char* name;
+    void* data;
 
     Node* next;
     Node* prev;
@@ -18,12 +18,12 @@ struct List {
 List* init_list ();
 void free_list (List* list);
 
-void traverse_list (List* list, void (*callback)(char* name));
+void traverse_list (List* list, void (*callback)(void*));
 
-void insert_front (List* list, char* data);
-void insert_back (List* list, char* data);
-void insert_after (List* list, Node* node, char* data);
-void insert_before (List* list, Node* node, char* data);
+void insert_front (List* list, void* data);
+void insert_back (List* list, void* data);
+void insert_after (List* list, Node* node, void* data);
+void insert_before (List* list, Node* node, void* data);
 
 void delete_from (List* list, Node* node);
 

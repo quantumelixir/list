@@ -3,14 +3,8 @@
 
 #include "list.h"
 
-/* Simple and clean doubly linked list to store strings
- *
- * what is supported:
- * -> Create a new list
- * -> Delete list
- * -> Traverse list
- * -> Add node
- * -> Delete node
+/*
+ * Simple and clean doubly linked list to store strings
  */
 
 List*
@@ -34,10 +28,10 @@ free_list (List* list) {
 }
 
 void
-traverse_list (List* list, void (*callback)(char* name)) {
+traverse_list (List* list, void (*callback)(void* data)) {
     Node* current = list->head;
     while (current) {
-        callback (current->name);
+        callback (current->data);
         current = current->next;
     }
 }
@@ -46,11 +40,11 @@ traverse_list (List* list, void (*callback)(char* name)) {
  * When prev is NULL it inserts before the head
  */
 void
-insert_after (List* list, Node* prev, char* data) {
+insert_after (List* list, Node* prev, void* data) {
     Node* next = prev ? prev->next : list->head;
 
     Node* newnode = (Node *) malloc (sizeof (Node));
-    newnode->name = data;
+    newnode->data = data;
 
     newnode->prev = prev;
     newnode->next = next;
@@ -66,11 +60,11 @@ insert_after (List* list, Node* prev, char* data) {
  * When next is NULL it inserts after the tail
  */
 void
-insert_before (List* list, Node* next, char* data) {
+insert_before (List* list, Node* next, void* data) {
     Node* prev = next ? next->prev : list->tail;
 
     Node* newnode = (Node *) malloc (sizeof (Node));
-    newnode->name = data;
+    newnode->data = data;
 
     newnode->prev = prev;
     newnode->next = next;
@@ -83,12 +77,12 @@ insert_before (List* list, Node* next, char* data) {
 }
 
 void
-insert_front (List* list, char* data) {
+insert_front (List* list, void* data) {
     insert_after (list, NULL, data);
 }
 
 void
-insert_back (List* list, char* data) {
+insert_back (List* list, void* data) {
     insert_before (list, NULL, data);
 }
 

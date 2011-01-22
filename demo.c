@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <string.h>
-#include <ncurses.h>
+#include <malloc.h>
 
 #include "list.h"
 
 void
-print_string (char* s) {
-    printf ("%s\n", s);
+print_string (void* s) {
+    printf ("%s\n", (char *)s);
 }
 
 int main()
