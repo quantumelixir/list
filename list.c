@@ -4,17 +4,17 @@
  * Simple and clean doubly linked list to store strings
  */
 
-List*
+struct List*
 init_list () {
-    List* list = (List *) malloc (sizeof (List));
+    struct List* list = (struct List *) malloc (sizeof (struct List));
     list->head = list->tail = NULL;
     return list;
 }
 
 void
-free_list (List* list) {
-    Node* current = list->head;
-    Node* next = NULL;
+free_list (struct List* list) {
+    struct Node* current = list->head;
+    struct Node* next = NULL;
 
     while (current) {
         next = current->next;
@@ -25,8 +25,8 @@ free_list (List* list) {
 }
 
 void
-traverse_list (List* list, void (*callback)(void* data)) {
-    Node* current = list->head;
+traverse_list (struct List* list, void (*callback)(void* data)) {
+    struct Node* current = list->head;
     while (current) {
         callback (current->data);
         current = current->next;
@@ -37,10 +37,10 @@ traverse_list (List* list, void (*callback)(void* data)) {
  * When prev is NULL it inserts before the head
  */
 void
-insert_after (List* list, Node* prev, void* data) {
-    Node* next = prev ? prev->next : list->head;
+insert_after (struct List* list, struct Node* prev, void* data) {
+    struct Node* next = prev ? prev->next : list->head;
 
-    Node* newnode = (Node *) malloc (sizeof (Node));
+    struct Node* newnode = (struct Node *) malloc (sizeof (struct Node));
     newnode->data = data;
 
     newnode->prev = prev;
@@ -57,10 +57,10 @@ insert_after (List* list, Node* prev, void* data) {
  * When next is NULL it inserts after the tail
  */
 void
-insert_before (List* list, Node* next, void* data) {
-    Node* prev = next ? next->prev : list->tail;
+insert_before (struct List* list, struct Node* next, void* data) {
+    struct Node* prev = next ? next->prev : list->tail;
 
-    Node* newnode = (Node *) malloc (sizeof (Node));
+    struct Node* newnode = (struct Node *) malloc (sizeof (struct Node));
     newnode->data = data;
 
     newnode->prev = prev;
@@ -74,19 +74,19 @@ insert_before (List* list, Node* next, void* data) {
 }
 
 void
-insert_front (List* list, void* data) {
+insert_front (struct List* list, void* data) {
     insert_after (list, NULL, data);
 }
 
 void
-insert_back (List* list, void* data) {
+insert_back (struct List* list, void* data) {
     insert_before (list, NULL, data);
 }
 
 void
-delete_from (List* list, Node* node) {
-    Node* prev = node->prev;
-    Node* next = node->next;
+delete_from (struct List* list, struct Node* node) {
+    struct Node* prev = node->prev;
+    struct Node* next = node->next;
 
     prev ? prev->next = next : 0 ;
     next ? next->prev = prev : 0 ;

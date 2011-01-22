@@ -3,30 +3,28 @@
 
 #include <stdlib.h>
 
-typedef struct Node Node; 
 struct Node {
     void* data;
 
-    Node* next;
-    Node* prev;
+    struct Node* next;
+    struct Node* prev;
 };
 
-typedef struct List List;
 struct List {
-    Node* head;
-    Node* tail;
+    struct Node* head;
+    struct Node* tail;
 };
 
-List* init_list ();
-void free_list (List* list);
+struct List* init_list ();
+void free_list (struct List* list);
 
-void traverse_list (List* list, void (*callback)(void*));
+void traverse_list (struct List* list, void (*callback)(void*));
 
-void insert_front (List* list, void* data);
-void insert_back (List* list, void* data);
-void insert_after (List* list, Node* node, void* data);
-void insert_before (List* list, Node* node, void* data);
+void insert_front (struct List* list, void* data);
+void insert_back (struct List* list, void* data);
+void insert_after (struct List* list, struct Node* node, void* data);
+void insert_before (struct List* list, struct Node* node, void* data);
 
-void delete_from (List* list, Node* node);
+void delete_from (struct List* list, struct Node* node);
 
 #endif /* __LIST_H__ */

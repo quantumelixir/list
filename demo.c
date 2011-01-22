@@ -10,7 +10,7 @@ print_string (void* s) {
 int main()
 {
 
-    List* list = init_list ();
+    struct List* list = init_list ();
 
     insert_front (list, "asdf");
     insert_front (list, "jkl;");

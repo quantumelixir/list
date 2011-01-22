@@ -2,6 +2,8 @@ project(list)
 
 cmake_minimum_required(VERSION 2.6)
 
+add_definitions("-Wall -ansi -pedantic -O2")
+
 if(APPLE)
     include_directories(/usr/include/malloc/)
 endif(APPLE)
