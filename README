@@ -1,0 +1,9 @@
+Simple and clean doubly linked list
+
+building
+--------
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ ./demo
