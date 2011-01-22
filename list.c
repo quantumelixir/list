@@ -1,6 +1,3 @@
-#include <string.h>
-#include <malloc.h>
-
 #include "list.h"
 
 /*
